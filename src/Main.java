@@ -74,6 +74,15 @@ public class Main {
         if (list.get(2).equals(list.get(4)) && list.get(4).equals(list.get(6))) {
             return (String) list.get(2);
         }
+        int cont = 0;
+        for (int i = 0; i < list.size(); i++){
+            if (list.get(i).equals("x") || list.get(i).equals("o")){
+                cont++;
+            }
+        }
+        if (cont == 9){
+            return "tie";
+        }
         return null;
     }
 
@@ -86,4 +95,5 @@ public class Main {
         }
         return input;
     }
+
 }
