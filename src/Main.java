@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +16,7 @@ public class Main {
         do {
             printGame(positions);
             System.out.println("player 1:");
-            position = scanner.nextInt();
+            position = input();
             positions.set(position,player1);
 
             winner = checkGameOver(positions);
@@ -27,7 +26,11 @@ public class Main {
 
             printGame(positions);
             System.out.println("player 2:");
-            position = scanner.nextInt();
+            position = input();
+            while (positions.get(position).equals("x") || positions.get(position).equals("o")){
+                System.out.println("invalid index");
+                position = input();
+            }
             positions.set(position,player2);
 
             winner = checkGameOver(positions);
@@ -72,5 +75,15 @@ public class Main {
             return (String) list.get(2);
         }
         return null;
+    }
+
+    static int input(){
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+        while (input < 0 || input > 8){
+            System.out.println("invalid position");
+            input = scanner.nextInt();
+        }
+        return input;
     }
 }
